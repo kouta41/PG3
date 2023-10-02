@@ -17,10 +17,15 @@ char Min<char>(char a, char b) {
 }
 
 int main(void) {
-	printf("%d\n", Min<int>(614, 514));
-	printf("%f\n", Min<float>(114.0f, 514.0f));
-	printf("%lf\n", Min<double>(1114, 90));
-	printf("%c\n", Min<char>(114, 514));
+	int a = 614; int b = 514;
+	float c = 114.0f; float d = 514.0f;
+	double e = 1114; double f = 90;
+	char g = 114; char h = 514;
+
+	printf("%d\n", Min<int>(a, b));
+	printf("%0.0f\n", Min<float>(c, d));
+	printf("%0.0lf\n", Min<double>(e, f));
+	printf("%c\n", Min<char>(g, h));
 
 	return 0;
 }
