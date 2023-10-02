@@ -2,7 +2,7 @@
 
 
 float Recursive(float a,float b) {
-	printf("%0.0fの時給:%0.0f\n",b, a);
+	printf("%0.0fの時給:%0.0f円\n",b, a);
 	a = a * 2 - 50;
 	if (b <= 0) {
 		return a;
