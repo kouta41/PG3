@@ -1,32 +1,21 @@
 ﻿#include <stdio.h>
+#include <stdlib.h>
+//#include <time.h>
 
-float c = 0;
-
-float Recursive(float a,float b) {
-	c=c + 1;
-	printf("%0.0fの時給:%0.0f円\n",c, a);
-	a = a * 2 - 50;
-	if (c >= b) {
-		return a;
-	}
-	return (a+Recursive(a,b));
+void Rand(void) {
+	int num = rand() % 10 + 1;
+	printf("%d\n", num);
 }
-
-
-float add(float a, float b) {
-	return a * b;
-}
-
 
 int main(void) {
-	float a = 100.0f;
-	float b = 1072.0f;
-	float c = 8;
+	void (*math)();
+	math = Rand;
+	printf("%p", *math);
 
-	printf("%0.0f時間勤務の場合\n", c);
-	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Recursive(float(a), float(c)));
+	int num = rand() % 10 + 1;
+	printf("%d\n", num);
 
-	printf("\n一般的な賃金体制\n合計:%0.0f円\n", add(float(b), float(c)));
+	math();
 
 	return 0;
 }
