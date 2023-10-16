@@ -1,15 +1,15 @@
 ﻿#include <stdio.h>
 
-float c = 0;
+float c = 1;
+float d = 0;
 
 float Recursive(float a,float b) {
-	c=c + 1;
-	printf("%0.0fの時給:%0.0f円\n",c, a);
+	printf("%0.0fの時給:%0.0f円\n",c++, a);
 	a = a * 2 - 50;
-	if (c >= b) {
-		return a;
+	if (c > b) {
+		return a-a;
 	}
-	return (a+Recursive(a,b));
+	return (Recursive(a,b)+a);
 }
 
 
@@ -21,7 +21,7 @@ float add(float a, float b) {
 int main(void) {
 	float a = 100.0f;
 	float b = 1072.0f;
-	float c = 8;
+	float c = 8.0f;
 
 	printf("%0.0f時間勤務の場合\n", c);
 	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Recursive(float(a), float(c)));
