@@ -1,22 +1,18 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
-//#include <time.h>
+#include <time.h>
 
-void Rand(void) {
-	int num = rand() % 10 + 1;
-	printf("%d\n", num);
+int Rand(void) {
+	int num = rand() % 6 + 1;
+	return num%6+1;
 }
 
 int main(void) {
-	void (*math)();
+	srand((unsigned int)time(NULL));
+
+	int (*math)();
 	math = Rand;
-	printf("%p", *math);
-
-	math();
-
-	int num = rand() % 10 ;
-	printf("%d\n", num);
-
+	printf("%d\n", math);
 
 	return 0;
 }
