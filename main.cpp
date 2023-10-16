@@ -3,8 +3,8 @@
 //#include <time.h>
 
 void Rand(void) {
-	return (rand() % 10 + 1);
-	//printf("%d\n", num);
+	int num = rand() % 10 + 1;
+	printf("%d\n", num);
 }
 
 int main(void) {
@@ -12,10 +12,11 @@ int main(void) {
 	math = Rand;
 	printf("%p", *math);
 
-	int num = rand() % 10 + 1;
+	math();
+
+	int num = rand() % 10 ;
 	printf("%d\n", num);
 
-	math();
 
 	return 0;
 }
