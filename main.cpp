@@ -2,17 +2,22 @@
 #include <stdlib.h>
 #include <time.h>
 
-int Rand(void) {
-	int num = rand() % 6 + 1;
-	return num%6+1;
+void Ran(void) {
+	srand((unsigned int)time(NULL));
+	int m = rand() % 6 + 1;
+	printf("%d\n", m);
 }
 
 int main(void) {
-	srand((unsigned int)time(NULL));
 
-	int (*math)();
-	math = Rand;
-	printf("%d\n", math);
+	void(*math)();
+
+	math = Ran;
+
+
+	math();
+	printf("\n", *math);
+
 
 	return 0;
 }
