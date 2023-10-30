@@ -20,61 +20,51 @@ int error(char a, int b) {
 	return printf("はずれ\n");
 }
 
-int SetTime(math m,int second) {
+int SetTime(result temp,int second) {
 	Sleep(second * 1000);
-	m(second,second);
+	temp(second,second);
 
 	return 0;
 }
 
 int main(void) {
-	char chr1 = 0;
-	char chr2 = 0;
-	int chr3 = 0;
+	char str = 0;
+	char text = 0;
 
-	int k = 0;
-	int no = 1;
+	int input = 0;
+	int time = 1;
 	
 	result temp;
 	//int (*m)(char,int);
-
-	 = dice;
+	temp = dice;
 
 	
-	printf("抽選結果 = %d\n",m(chr1,no));
-	k = m(chr1, no);
+	printf("抽選結果 = %d\n", temp(str,time));
+	input = temp(str, time);
 	printf("偶数は=0,奇数は=1\n");
 
-	scanf_s("%c", &chr2);
-	chr3 = chr2;
-	printf("chr2=%d\n", chr2);
-	printf("k=%d\n", k);
+	scanf_s("%c", &text);
 
-	if (k == 2 || k == 4 || k == 6) {
-		if (chr2 ==48) {
-			m = correct;
-			SetTime(m, no);
+	if (input == 2 || input == 4 || input == 6) {
+		if (text ==48) {
+			temp = correct;
+			SetTime(temp, time);
 		}
 		else {
-			m = error;
-			SetTime(m, no);
+			temp = error;
+			SetTime(temp, time);
 		}
 	}
-	else if(k == 1 ||k == 3 || k == 5) {
-		if (chr2 == 49) {
-			m = correct;
-			SetTime(m, no);
+	else if(input == 1 || input == 3 || input == 5) {
+		if (text == 49) {
+			temp = correct;
+			SetTime(temp, time);
 		}
 		else {
-			m = error;
-			SetTime(m, no);
+			temp = error;
+			SetTime(temp, time);
 		}
 	}
-	/*else {
-		m = No;
-		SetTime(m, no);
-	}*/
-
 
 	return 0;
 }
