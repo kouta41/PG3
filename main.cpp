@@ -4,12 +4,13 @@
 #include <time.h>
 
 
-typedef void(*math)(int *);
+typedef int(*math)(int);
 
 
-void Ran(int a) {
+int Ran(int a) {
 	srand((unsigned int)time(NULL));
 	a = rand() % 6 + 1;
+	return	a;
 }
 
 void Ok(int *a) {
@@ -21,7 +22,7 @@ void No(int *a) {
 
 void SetTime(math m,int second) {
 	Sleep(second * 1000);
-	m(&second);
+	m(second);
 }
 
 int main(void) {
@@ -31,18 +32,20 @@ int main(void) {
 	math m;
 
 	m = Ran;
+
+	
 	printf("抽選結果 = %d\n",m);
 
 	printf("数字1~6を入力せよ\n");
 
 	scanf_s("%c", &chr1);
 	if ((int)m == chr1) {
-		m = &Ok;
-		SetTime(m, 3);
+		//m = &Ok;
+		//SetTime(m, 3);
 	}
 	else {
-		m = &No;
-		SetTime(m, 3);
+		//m = &No;
+		//SetTime(m, 3);
 	}
 
 
