@@ -1,16 +1,16 @@
 ﻿#include <stdio.h>
 
-float e = 1;
-float d = 0;
+float Start = 1;
+float End = 0;
 
 float Calculation(float a,float c) {
-	printf("%0.0fの時給:%0.0f円\n",e++, a);
-	d = a + d;
+	printf("%0.0fの時給:%0.0f円\n", Start++, a);
+	End = a + End;
 
 	a = a * 2 - 50;
 	
-	if (e > c) {
-		return d;
+	if (Start > c) {
+		return End;
 	}
 
 
@@ -24,14 +24,14 @@ float add(float a, float b) {
 
 
 int main(void) {
-	float a = 100.0f;
-	float b = 1072.0f;
-	float c = 7.0f;
+	float recursiveMoney = 100.0f;
+	float hourlywage = 1072.0f;
+	float workTime = 7.0f;
 
-	printf("%0.0f時間勤務の場合\n", c);
-	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Calculation(float(a), float(c)));
+	printf("%0.0f時間勤務の場合\n", workTime);
+	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Calculation(float(recursiveMoney), float(workTime)));
 
-	printf("\n一般的な賃金体制\n合計:%0.0f円\n", add(float(b), float(c)));
+	printf("\n一般的な賃金体制\n合計:%0.0f円\n", add(float(hourlywage), float(workTime)));
 
 	return 0;
 }
