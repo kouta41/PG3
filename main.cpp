@@ -3,7 +3,7 @@
 float e = 1;
 float d = 0;
 
-float Recursive(float a,float c) {
+float Calculation(float a,float c) {
 	printf("%0.0fの時給:%0.0f円\n",e++, a);
 	d = a + d;
 
@@ -14,7 +14,7 @@ float Recursive(float a,float c) {
 	}
 
 
-	return (Recursive(a,c));
+	return (Calculation(a,c));
 }
 
 
@@ -29,7 +29,7 @@ int main(void) {
 	float c = 7.0f;
 
 	printf("%0.0f時間勤務の場合\n", c);
-	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Recursive(float(a), float(c)));
+	printf("\n再帰的な賃金体制\n合計:%0.0f円\n", Calculation(float(a), float(c)));
 
 	printf("\n一般的な賃金体制\n合計:%0.0f円\n", add(float(b), float(c)));
 
