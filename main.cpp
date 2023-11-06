@@ -44,11 +44,13 @@ int main() {
 	int answer;
 
 	printf("丁( 2 )、半( 1 )選べ\n\n");
+	while (1) {
 		printf("丁( 2 )、半( 1 )を入力\n");
 		printf("予想:");
 		scanf_s("%d", &answer);
 
 		result(dice(), answer);
+	}
 
 	return 0;
 }
