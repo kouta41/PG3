@@ -41,7 +41,7 @@ int main(void) {
 	
 	printf("抽選結果 = %d\n", temp(str,time));
 	input = temp(str, time);
-	printf("偶数は=0,奇数は=1\n");
+	printf("丁は=0,半は=1\n");
 
 	scanf_s("%c", &text);
 
