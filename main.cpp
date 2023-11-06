@@ -7,16 +7,16 @@
 typedef int(*result)(char, int);
 
 
-int dice(char a,int b) {
+int dice(char str,int Time) {
 	srand((unsigned int)time(NULL));
-	a = rand() % 6 + 1;
-	return a;
+	str = rand() % 6 + 1;
+	return str;
 }
 
-int correct(char a, int b) {
+int correct(char str, int time) {
 	return printf("当たり\n");
 }
-int error(char a, int b) {
+int error(char str, int time) {
 	return printf("はずれ\n");
 }
 
