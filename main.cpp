@@ -6,33 +6,23 @@
 
 int main() {
 
-	std::function<void(int, int)> result = [&](int p, int answer) {
-		int dice = p % 2;
-		int anticipation = answer % 2;
+	std::function<void(int, int)> result = [&](int p, int temp) {
+		int text = p % 2;
+		int input = temp % 2;
 		Sleep(3000);
 
-		printf("回答:");
-
-		// 偶数なら丁
-		if (dice == 0) {
-			printf("丁\n");
-		}// 奇数なら半
-		else if (dice != 0) {
-			printf("半\n");
-		}
-
 		// どちらも同じ数なら正解
-		if (anticipation == dice) {
-			printf("結果:正\n\n");
+		if (input == text) {
+			printf("当たり\n\n");
 		}
 		else {
-			printf("結果:誤\n\n");
+			printf("はずれ\n\n");
 		}
 	};
 
-	// サイコロを決定
-	int currentTime = time(nullptr);
-	srand(currentTime);
+	
+	char str = time(nullptr);
+	srand(str);
 
 	std::function<int()> dice = [&]() {
 		int result = rand() % 6 + 1;
@@ -40,17 +30,16 @@ int main() {
 	};
 
 
-	// 予想
-	int answer;
+	//回答
+	int temp;
 
-	printf("丁( 2 )、半( 1 )選べ\n\n");
-	while (1) {
-		printf("丁( 2 )、半( 1 )を入力\n");
+
+	printf("丁は=0,半は=1\n\n");
 		printf("予想:");
-		scanf_s("%d", &answer);
+		scanf_s("%d", &temp);
 
-		result(dice(), answer);
-	}
+		result(dice(), temp);
+	
 
 	return 0;
 }
