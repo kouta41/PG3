@@ -19,7 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Dog.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cry.h" />
+    <ClInclude Include="Cat.h" />
+    <ClInclude Include="Dog.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

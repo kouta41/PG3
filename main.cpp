@@ -1,45 +1,30 @@
 ﻿#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include <windows.h>
-#include <functional>
+#include "Cry.h"
+#include "Cat.h"
+#include "Dog.h"
+
 
 int main() {
+	Cry* cry[4];
 
-	std::function<void(int, int)> result = [&](int p, int temp) {
-		int text = p % 2;
-		int input = temp % 2;
-		Sleep(3000);
-
-		// どちらも同じ数なら正解
-		if (input == text) {
-			printf("当たり\n\n");
+	//生成フェーズ
+	for (int i = 0; i < 4; i++) {
+		if (i < 3) {
+			cry[i] = new Dog;
 		}
 		else {
-			printf("はずれ\n\n");
+			cry[i] = new Cat;
 		}
-	};
+	}
 
-	
-	char str = time(nullptr);
-	srand(str);
+	//動くフェーズ
+	for (int i = 0; i < 4; i++){
+		cry[i]->Move();
+	}
 
-	std::function<int()> dice = [&]() {
-		int result = rand() % 6 + 1;
-		return result;
-	};
-
-
-	//回答
-	int temp;
-
-
-	printf("丁は=0,半は=1\n\n");
-		printf("予想:");
-		scanf_s("%d", &temp);
-
-		result(dice(), temp);
-	
-
-	return 0;
+	//破棄フェーズ
+	for (int i = 0; i < 4; i++) {
+		delete cry[i];
+	}
 }
