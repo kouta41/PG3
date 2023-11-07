@@ -9,7 +9,7 @@ public:
 	void Size() override;
 	void Draw() override;
 private:
-	float width = 5.0f;
-	float height = 3.0f;
+	float width = 7.0f;
+	float height = 9.0f;
 	float area;
 };

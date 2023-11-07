@@ -15,5 +15,5 @@ void Rectangle::Size()
 
 void Rectangle::Draw()
 {
-	printf("–ÊÏ‚Í%f\n", area);
+	printf("–ÊÏ‚Í%0.f\n", area);
 }

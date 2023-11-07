@@ -9,6 +9,6 @@ public:
 	void Size() override;
 	void Draw() override;
 private:
-	float radius = 5.0f;
+	float radius = 8.0f;
 	float area;
 };
