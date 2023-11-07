@@ -1,27 +1,30 @@
 ﻿#include <stdio.h>
 #include <windows.h>
-
-#include "IShape.h"
-#include "Circle.h"
-#include "Rectangle.h"
-
+#include "Cry.h"
+#include "Cat.h"
+#include "Dog.h"
 
 
 int main() {
-	IShape* iShape[2];
+	Cry* cry[4];
 
-	iShape[0] = new Circle();
-	iShape[1] = new Rectangle();
-
-	for (int i = 0; i < 2; i++) {
-		iShape[i]->Size();
-		iShape[i]->Draw();
+	//生成フェーズ
+	for (int i = 0; i < 4; i++) {
+		if (i < 3) {
+			cry[i] = new Dog;
+		}
+		else {
+			cry[i] = new Cat;
+		}
 	}
 
-	for (int i = 0; i < 2; i++) {
-		delete iShape[i];
+	//動くフェーズ
+	for (int i = 0; i < 4; i++) {
+		cry[i]->Move();
 	}
 
-
-	return 0;
+	//破棄フェーズ
+	for (int i = 0; i < 4; i++) {
+		delete cry[i];
+	}
 }

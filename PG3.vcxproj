@@ -19,14 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Dog.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Cat.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IShape.h" />
-    <ClInclude Include="Circle.h" />
-    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Cry.h" />
+    <ClInclude Include="Dog.h" />
+    <ClInclude Include="Cat.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
