@@ -1,54 +1,70 @@
 ﻿#include <stdio.h>
+#include <Windows.h>
 #include <stdlib.h>
 #include <time.h>
-#include <windows.h>
-#include <functional>
 
-int main() {
 
-	std::function<void(int, int)> result = [&](int p, int answer) {
-		int dice = p % 2;
-		int anticipation = answer % 2;
-		Sleep(3000);
+typedef int(*result)(char, int);
 
-		printf("回答:");
 
-		// 偶数なら丁
-		if (dice == 0) {
-			printf("丁\n");
-		}// 奇数なら半
-		else if (dice != 0) {
-			printf("半\n");
-		}
+int dice(char str, int Time) {
+	srand((unsigned int)time(NULL));
+	str = rand() % 6 + 1;
+	return str;
+}
 
-		// どちらも同じ数なら正解
-		if (anticipation == dice) {
-			printf("結果:正\n\n");
+int correct(char str, int time) {
+	return printf("当たり\n");
+}
+int error(char str, int time) {
+	return printf("はずれ\n");
+}
+
+int SetTime(result temp, int second) {
+	Sleep(second * 1000);
+	temp(second, second);
+
+	return 0;
+}
+
+int main(void) {
+	char str = 0;
+	char text = 0;
+
+	int input = 0;
+	int time = 1;
+
+	result temp;
+	//int (*m)(char,int);
+	temp = dice;
+
+
+	printf("抽選結果 = %d\n", temp(str, time));
+	input = temp(str, time);
+	printf("丁は=0,半は=1\n");
+
+	scanf_s("%c", &text);
+
+	if (input == 2 || input == 4 || input == 6) {
+		if (text == 48) {
+			temp = correct;
+			SetTime(temp, time);
 		}
 		else {
-			printf("結果:誤\n\n");
+			temp = error;
+			SetTime(temp, time);
 		}
-	};
-
-	// サイコロを決定
-	int currentTime = time(nullptr);
-	srand(currentTime);
-
-	std::function<int()> dice = [&]() {
-		int result = rand() % 6 + 1;
-		return result;
-	};
-
-
-	// 予想
-	int answer;
-
-	printf("丁( 2 )、半( 1 )選べ\n\n");
-		printf("丁( 2 )、半( 1 )を入力\n");
-		printf("予想:");
-		scanf_s("%d", &answer);
-
-		result(dice(), answer);
+	}
+	else if (input == 1 || input == 3 || input == 5) {
+		if (text == 49) {
+			temp = correct;
+			SetTime(temp, time);
+		}
+		else {
+			temp = error;
+			SetTime(temp, time);
+		}
+	}
 
 	return 0;
 }
