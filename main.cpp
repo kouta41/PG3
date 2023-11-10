@@ -7,7 +7,7 @@ int main(void) {
 	printf("%d\n", IntAndFloat.Min());
 
 	Calculator<int, double> IntAndDouble(11, 10.0f);
-	printf("%f\n", IntAndDouble.Min());
+	printf("%d\n", IntAndDouble.Min());
 
 	Calculator<float, int> FloatAndInt(14.0f, 12);
 	printf("%f\n", FloatAndInt.Min());
