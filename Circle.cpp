@@ -1,4 +1,4 @@
-#include "Circle.h"
+﻿#include "Circle.h"
 
 
 Circle::Circle()
@@ -16,5 +16,5 @@ void Circle::Size()
 
 void Circle::Draw()
 {
-	printf("�ʐς�%0.f\n", area);
+	printf("面積は%0.f\n", area);
 }

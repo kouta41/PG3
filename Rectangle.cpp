@@ -1,4 +1,4 @@
-#include "Rectangle.h"
+﻿#include "Rectangle.h"
 
 Rectangle::Rectangle()
 {
@@ -15,5 +15,5 @@ void Rectangle::Size()
 
 void Rectangle::Draw()
 {
-	printf("�ʐς�%0.f\n", area);
+	printf("面積は%0.f\n", area);
 }
