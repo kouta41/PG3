@@ -4,12 +4,13 @@
 #include <windows.h>
 #include <functional>
 
-int main() {
-
+	void SetTimeout() {
+		Sleep(3000);
+	}
 	std::function<void(int, int)> result = [&](int p, int temp) {
 		int text = p % 2;
 		int input = temp % 2;
-		Sleep(3000);
+		SetTimeout();
 
 		// どちらも同じ数なら正解
 		if (input == text) {
@@ -20,26 +21,31 @@ int main() {
 		}
 	};
 
-	
-	char str = time(nullptr);
-	srand(str);
-
 	std::function<int()> dice = [&]() {
 		int result = rand() % 6 + 1;
 		return result;
 	};
 
 
+int main() {
+
+
+	
+
+
+
 	//回答
 	int temp;
+	while (true) {
+		char str = time(nullptr);
+		srand(str);
 
-
-	printf("丁は=0,半は=1\n\n");
+		printf("丁は=0,半は=1\n\n");
 		printf("予想:");
 		scanf_s("%d", &temp);
-
 		result(dice(), temp);
-	
+
+	}
 
 	return 0;
 }
