@@ -7,12 +7,13 @@
 	void SetTimeout() {
 		Sleep(3000);
 	}
-	std::function<void(int, int)> result = [&](int p, int temp) {
-		int text = p % 2;
+
+	std::function<void(int, int)> result = [&](int dice, int temp) {
+		int text = dice % 2;
 		int input = temp % 2;
 		SetTimeout();
 
-		// どちらも同じ数なら正解
+		// どちらも同じ数なから正解
 		if (input == text) {
 			printf("当たり\n\n");
 		}
@@ -29,13 +30,9 @@
 
 int main() {
 
-
-	
-
-
-
 	//回答
 	int temp;
+
 	while (true) {
 		char str = time(nullptr);
 		srand(str);
@@ -44,8 +41,6 @@ int main() {
 		printf("予想:");
 		scanf_s("%d", &temp);
 		result(dice(), temp);
-
 	}
-
 	return 0;
 }
