@@ -5,21 +5,20 @@
 #include <functional>
 
 //三秒待つ
-void SetTimeout() {
+int SetTimeout(std::function<int()> dice) {
 	Sleep(3000);
+	return dice();
 }
 
 //判断する機構
-std::function<void(int, int)> result = [&](int dice, int temp) {
-	int text = dice % 2;
-	int input = temp % 2;
-	SetTimeout();
+std::function<void(int temp)> result = [&](int temp) {
+	
 	// どちらも同じ数なから正解
-	if (input == text) {
-		printf("当たり\n\n");
+	if (temp % 2 == 0) {
+		printf("出目:丁\n");
 	}
-	else {
-		printf("はずれ\n\n");
+	else if (temp % 2 == 1) {
+		printf("出目:半\n");
 	}
 };
 
@@ -34,16 +33,31 @@ int main() {
 
 	//回答
 	int temp;
+	//答え
+	int answer;
+
 
 	while (true) {
 		//ダイスリセット
 		char str = time(nullptr);
 		srand(str);
 
-		printf("丁は=0,半は=1\n\n");
+		printf("\n半は=1,丁は=2\n\n");
 		printf("予想:");
 		scanf_s("%d", &temp);
-		result(dice(), temp);
+
+		answer = SetTimeout(dice);
+		result(answer);
+
+		if (answer % 2 == 0 && temp == 2) {
+			printf("勝ち\n");
+		}
+		else if (answer % 2 == 1 && temp == 1) {
+			printf("勝ち\n");
+		}
+		else {
+			printf("負け\n");
+		}
 	}
 	return 0;
 }
