@@ -10,14 +10,14 @@ int SetTimeout(std::function<int()> dice) {
 	return dice();
 }
 
-//判断する機構
-std::function<void(int temp)> result = [&](int temp) {
+//ダイスの出目
+std::function<void(int number)> result = [&](int number) {
 	
 	// どちらも同じ数なから正解
-	if (temp % 2 == 0) {
+	if (number % 2 == 0) {
 		printf("出目:丁\n");
 	}
-	else if (temp % 2 == 1) {
+	else if (number % 2 == 1) {
 		printf("出目:半\n");
 	}
 };
@@ -32,7 +32,7 @@ std::function<int()> dice = [&]() {
 int main() {
 
 	//回答
-	int temp;
+	int number;
 	//答え
 	int answer;
 
@@ -42,21 +42,22 @@ int main() {
 		char str = time(nullptr);
 		srand(str);
 
-		printf("\n半は=1,丁は=2\n\n");
+		printf("\n半は:1,丁は:2\n\n");
 		printf("予想:");
-		scanf_s("%d", &temp);
+		scanf_s("%d", &number);
 
 		answer = SetTimeout(dice);
 		result(answer);
 
-		if (answer % 2 == 0 && temp == 2) {
-			printf("勝ち\n");
+		//結果
+		if (answer % 2 == 0 && number == 2) {
+			printf("結果:勝ち\n");
 		}
-		else if (answer % 2 == 1 && temp == 1) {
-			printf("勝ち\n");
+		else if (answer % 2 == 1 && number == 1) {
+			printf("結果:勝ち\n");
 		}
 		else {
-			printf("負け\n");
+			printf("結果:負け\n");
 		}
 	}
 	return 0;
