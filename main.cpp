@@ -4,28 +4,30 @@
 #include <windows.h>
 #include <functional>
 
-	void SetTimeout() {
-		Sleep(3000);
+//三秒待つ
+void SetTimeout() {
+	Sleep(3000);
+}
+
+//判断する機構
+std::function<void(int, int)> result = [&](int dice, int temp) {
+	int text = dice % 2;
+	int input = temp % 2;
+	SetTimeout();
+	// どちらも同じ数なから正解
+	if (input == text) {
+		printf("当たり\n\n");
 	}
+	else {
+		printf("はずれ\n\n");
+	}
+};
 
-	std::function<void(int, int)> result = [&](int dice, int temp) {
-		int text = dice % 2;
-		int input = temp % 2;
-		SetTimeout();
-
-		// どちらも同じ数なから正解
-		if (input == text) {
-			printf("当たり\n\n");
-		}
-		else {
-			printf("はずれ\n\n");
-		}
-	};
-
-	std::function<int()> dice = [&]() {
-		int result = rand() % 6 + 1;
-		return result;
-	};
+//ダイスを振る
+std::function<int()> dice = [&]() {
+	int result = rand() % 6 + 1;
+	return result;
+};
 
 
 int main() {
@@ -34,6 +36,7 @@ int main() {
 	int temp;
 
 	while (true) {
+		//ダイスリセット
 		char str = time(nullptr);
 		srand(str);
 
