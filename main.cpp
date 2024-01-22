@@ -4,32 +4,33 @@
 #include <windows.h>
 #include <functional>
 
-//三秒待つ
-int SetTimeout(std::function<int()> dice) {
-	Sleep(3000);
-	return dice();
-}
 
-//ダイスの出目
-std::function<void(int number)> result = [&](int number) {
-	
-	// どちらも同じ数なから正解
-	if (number % 2 == 0) {
-		printf("出目:丁\n");
+	//三秒待つ
+	int SetTimeout(std::function<int()> dice) {
+		Sleep(3000);
+		return dice();
 	}
-	else if (number % 2 == 1) {
-		printf("出目:半\n");
-	}
-};
-
-//ダイスを振る
-std::function<int()> dice = [&]() {
-	int result = rand() % 6 + 1;
-	return result;
-};
 
 
 int main() {
+
+	//ダイスの出目
+	std::function<void(int number)> result = [&](int number) {
+
+		// どちらも同じ数なから正解
+		if (number % 2 == 0) {
+			printf("出目:丁\n");
+		}
+		else if (number % 2 == 1) {
+			printf("出目:半\n");
+		}
+	};
+
+	//ダイスを振る
+	std::function<int()> dice = [&]() {
+		int result = rand() % 6 + 1;
+		return result;
+	};
 
 	//回答
 	int number;
