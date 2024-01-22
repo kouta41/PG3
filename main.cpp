@@ -4,7 +4,7 @@
 #include <time.h>
 
 
-typedef int(*result)(char, int);
+typedef int(*Result)(char, int);
 
 
 int dice(char str, int Time) {
@@ -20,9 +20,9 @@ int error(char str, int time) {
 	return printf("はずれ\n");
 }
 
-int SetTime(result temp, int second) {
+int SetTime(Result result, int second) {
 	Sleep(second * 1000);
-	temp(second, second);
+	result(second, second);
 
 	return 0;
 }
@@ -34,35 +34,35 @@ int main(void) {
 	int input = 0;
 	int time = 1;
 
-	result temp;
+	Result result;
 	//int (*m)(char,int);
-	temp = dice;
+	result = dice;
 
 
-	printf("抽選結果 = %d\n", temp(str, time));
-	input = temp(str, time);
+	printf("抽選結果 = %d\n", result(str, time));
+	input = result(str, time);
 	printf("丁は=0,半は=1\n");
 
 	scanf_s("%c", &text);
 
 	if (input == 2 || input == 4 || input == 6) {
 		if (text == 48) {
-			temp = correct;
-			SetTime(temp, time);
+			result = correct;
+			SetTime(result, time);
 		}
 		else {
-			temp = error;
-			SetTime(temp, time);
+			result = error;
+			SetTime(result, time);
 		}
 	}
 	else if (input == 1 || input == 3 || input == 5) {
 		if (text == 49) {
-			temp = correct;
-			SetTime(temp, time);
+			result = correct;
+			SetTime(result, time);
 		}
 		else {
-			temp = error;
-			SetTime(temp, time);
+			result = error;
+			SetTime(result, time);
 		}
 	}
 
