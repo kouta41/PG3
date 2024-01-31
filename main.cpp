@@ -1,32 +1,28 @@
-#include <stdio.h>
-#include <thread>
-
-void text1(int num1) {
-	printf("thread %d\n", num1);
-}
-
-void text2(int num2) {
-	printf("thread %d\n", num2);
-}
-
-void text3(int num3) {
-	printf("thread %d\n", num3);
-}
+#include <iostream>
+#include <string>
+#include <chrono>
 
 int main() {
-	int num1 = 1;
-	int num2 = 2;
-	int num3 = 3;
 
-	std::thread th1(text1,num1);
-	th1.join();
-	
-	std::thread th2(text2,num2);
-	th2.join();
+	std::string a(100000, 'a');
+	std::string copy{};
+	std::string move{};
 
-	std::thread th3(text3,num3);
-	th3.join();
+	// コピー
+	auto copyStart = std::chrono::system_clock::now();
+	copy = a;
+	auto copyEnd = std::chrono::system_clock::now();
+	std::chrono::duration<double, std::micro> elapsed1 = copyEnd - copyStart;
+
+	// 移動
+	auto moveStart = std::chrono::system_clock::now();
+	move = std::move(a);
+	auto moveEnd = std::chrono::system_clock::now();
+	std::chrono::duration<double, std::micro> elapsed2 = moveEnd - moveStart;
+
+	// 経過時間を表示
+	std::cout << elapsed1.count() << "μs" << std::endl;
+	std::cout << elapsed2.count() << "μs" << std::endl;
 
 	return 0;
-
 }
